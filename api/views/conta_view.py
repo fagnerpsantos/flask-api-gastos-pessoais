@@ -29,13 +29,13 @@ class ContaList(Resource):
 
 
 class ContaDetail(Resource):
-    @autorizacao_user.conta_user
+    # @autorizacao_user.conta_user
     def get(self, id):
         conta = conta_service.listar_conta_id(id)
         cs = conta_schema.ContaSchema()
         return make_response(cs.jsonify(conta), 200)
 
-    @autorizacao_user.conta_user
+    # @autorizacao_user.conta_user
     def put(self, id):
         conta_bd = conta_service.listar_conta_id(id)
         cs = conta_schema.ContaSchema()
@@ -49,7 +49,7 @@ class ContaDetail(Resource):
             result = conta_service.editar_conta(conta_bd, conta_nova)
             return make_response(cs.jsonify(result), 201)
 
-    @autorizacao_user.conta_user
+    # @autorizacao_user.conta_user
     def delete(self, id):
         conta = conta_service.listar_conta_id(id)
         conta_service.remover_conta(conta)
